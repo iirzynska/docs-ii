@@ -29,7 +29,7 @@ Use case::
 * Use a GitOps approach to manage hybrid and multi-cloud deployments across both public and private clouds.
 * Enable cross-cluster governance and application lifecycle management.
 * Securely manage secrets across the deployment.
-* Accelerates AI operations and improve computational performance by using Intel® Advanced Matrix Extensions.
+* Accelerate AI operations and improve computational performance by using Intel® Advanced Matrix Extensions.
 
 +
 [NOTE]
@@ -57,6 +57,7 @@ Benefits of Hybrid Multicloud management with GitOps:
 .Overview of the solution including the business drivers, management hub, and the clusters under management
 image::multicloud-gitops-amx/hybrid-multicloud-management-gitops-hl-arch.png[Multicloud Architecture]
 
+//Add soemthing about hardware running with Xeons
 In the following figure, logically, this solution can be viewed as being composed of an automation component, unified management including secrets management, and the clusters under management, all running on top of a user-chosen mixture of on-premise data centers and public clouds.
 
 //figure 2 originally
@@ -165,13 +166,18 @@ View and download all of the diagrams above from the link:https://www.redhat.com
 [id="extension-of-mcg"]
 == Extension of Multicloud Gitops pattern
 
-The Multicloud Gitops pattern has been extended by adding NFD Operator and an application called amx-app. The amx-app runs DIEN (Deep Interest Evolution Network) inference using the Intel-optimized Tensorflow and measures its accuracy for the bfloat16 precision to show the value of using Intel AMX. DIEN is a machine learning model used in the field of recommender systems, particularly in the domain of personalized content recommendation.
-An amx-app must be running on the node with CPU supporting Intel AMX. To make sure that it is the case, NFD (Node Feature Discovery) Operator is deployed as a part of this pattern. NFD manages the detection of hardware features and configuration in an OpenShift Container Platform cluster by labeling the nodes with hardware-specific information. The kernel detects Intel AMX at run-time, so there is no need to enable and configure it separately.
-A deployment of amx-app was created based on instructions from Model Zoo for Intel® Architecture repository (https://github.com/IntelAI/models/blob/master/quickstart/recommendation/tensorflow/dien/inference/cpu/README_SPR_DEV_CAT.md) and uses the intel/recommendation:tf-spr-dien-inference (https://hub.docker.com/layers/intel/recommendation/tf-spr-dien-inference/images/sha256-085c43d838197ae92db8a056da254506abd667951a3ae11e47da48f2f47cb92f?context=explore) image.
-An amx-app use persistent volume claim to download and prepare dataset. When dataset is ready, an application runs and measures the inference accuracy. By enabling ONEDNN verbose all the compiled instructions are shown in the logs. The appearance of "avx_512_core_amx_bf16" confirms that AMX is used.
+The Multicloud Gitops pattern has been extended by adding NFD Operator and an application called `amx-app`. 
 
+* The `amx-app` runs DIEN (Deep Interest Evolution Network) inference using the Intel-optimized Tensorflow and measures its accuracy for the bfloat16 precision to show the value of using Intel AMX. DIEN is a machine learning model used in the field of recommender systems, particularly in the domain of personalized content recommendation.
+
+* An `amx-app` must be running on the node with CPU supporting Intel AMX. To make sure that it is the case, NFD (Node Feature Discovery) Operator is deployed as a part of this pattern. NFD manages the detection of hardware features and configuration in an OpenShift Container Platform cluster by labeling the nodes with hardware-specific information. The kernel detects Intel AMX at run-time, so there is no need to enable and configure it separately.
+
+* A deployment of `amx-app` was created based on instructions from  link:https://github.com/IntelAI/models/blob/master/quickstart/recommendation/tensorflow/dien/inference/cpu/README_SPR_DEV_CAT.md[Model Zoo for Intel® Architecture repository - TF DIEN inference] and uses  link:https://hub.docker.com/layers/intel/recommendation/tf-spr-dien-inference/images/sha256-085c43d838197ae92db8a056da254506abd667951a3ae11e47da48f2f47cb92f?context=explore[intel/recommendation:tf-spr-dien-inference image].
+
+* An `amx-app` use persistent volume claim to download and prepare dataset. When dataset is ready, an application runs and measures the inference accuracy. By enabling ONEDNN verbose all the compiled instructions are shown in the logs. The appearance of `avx_512_core_amx_bf16` flag confirms that AMX is used.
++
 //figure 7 originally
-.Logs from amx-app pod
+.Logs from `amx-app` pod
 image::multicloud-gitops-amx/amx-app-log.png[Logs from amx-app pod]
 
 [id="next-steps_mcg-index"]
