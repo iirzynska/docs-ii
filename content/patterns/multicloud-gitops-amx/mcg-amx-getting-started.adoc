@@ -8,8 +8,8 @@ aliases: /multicloud-gitops/mcg-getting-started/
 :imagesdir: /images
 :_content-type: ASSEMBLY
 
-// [id="deploying-mcg-pattern"]
-// = Deploying the Multicloud GitOps pattern
+[id="deploying-mcg-pattern"]
+== Deploying the Multicloud GitOps pattern
 
 .Prerequisites
 

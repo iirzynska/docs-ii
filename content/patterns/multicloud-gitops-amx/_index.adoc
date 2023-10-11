@@ -22,7 +22,7 @@ links:
 :_content-type: CONCEPT
 
 [id="about-multicloud-gitops-amx-pattern"]
-= About the Multicloud GitOps with Intel AMX pattern
+== About the Multicloud GitOps with Intel AMX pattern
 
 Use case::
 
@@ -62,7 +62,7 @@ In the following figure, logically, this solution can be viewed as being compose
 
 //figure 2 originally
 .Logical diagram of hybrid multi-cloud management with GitOps
-image::multicloud-gitops-amx/logical-diagram.png[Logical Architecture]
+image::multicloud-gitops-amx/amx-logical-diagram.png[Logical Architecture]
 
 [id="about-technology"]
 == About the technology
@@ -93,7 +93,7 @@ Provides a secure centralized store for dynamic infrastructure and applications 
 This solution also uses a variety of _observability tools_ including the Prometheus monitoring and Grafana dashboard that are integrated with OpenShift as well as components of the Observatorium meta-project which includes Thanos and the Loki API.
 
 [id="overview-architecture"]
-= Overview of the architectures
+== Overview of the architectures
 
 The following figure provides a schematic diagram overview of the complete solution including both components and data flows.
 
