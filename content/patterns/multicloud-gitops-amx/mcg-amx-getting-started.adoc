@@ -94,27 +94,95 @@ To deploy the cluster by using the `pattern.sh` file, complete the following ste
 +
 [source,terminal]
 ----
- oc login
+oc login
 ----
 +
 Optional: Set the `KUBECONFIG` variable for the `kubeconfig` file path:
 +
 [source,terminal]
 ----
- export KUBECONFIG=~/<path_to_kubeconfig>
+export KUBECONFIG=~/<path_to_kubeconfig>
 ----
 
 . Deploy the pattern to your cluster. Run the following command:
 +
 [source,terminal]
 ----
- ./pattern.sh make install
+./pattern.sh make install
 ----
 
-. Verify that the Operators have been installed.
- .. To verify, in the OpenShift Container Platform web console, navigate to *Operators → Installed Operators* page.
- .. Check that the Operator is installed in the `openshift-operators` namespace and its status is `Succeeded`.
-. Verify that all applications are synchronized. Under the project `multicloud-gitops-hub` click the URL for the `hub` gitops `server`. The Vault application is not synched.
+Verify that the Operators have been installed.
+
+. To verify, in the OpenShift Container Platform web console, navigate to *Operators → Installed Operators* page.
+. Check that the Operators (*Advanced Cluster Management for Kubernetes*, *multicluster engine for Kubernetes*, *Node Feature Discovery Operator*, *Red Hat Openshift GitOps* and *Validated Patterns Operator*) are installed with `Succeeded` status.
+
+== Deploying the cluster by using the Validated Patterns Operator
+
+To install the *Validated Patterns Operator*:
+
+. Log in to the *Openshift Container Platform* web console and select *Operators > OperatorHub*.
+
+. Search for *Validated Patterns Operator*, open it and click *Install*.
+
+. Choose default settings for the installation mode, namespaces and update strategy and confirm it by clicking *Install*.
+
+. Select *Operators > Installed Operators*.
+
+. Ensure that *Validated Patterns Operator* is listed in the `openshift-operators` project with a status `Succeeded`.
+
+After succeeded installation open *Validated Patterns Operator*, go to *Pattern* tab and click *Create Pattern*.
+
+. Fill *Name* of the pattern `multicloud-gitops-amx` and *Cluster Group Name* `hub` (from _values-global.yaml_ file).
+
+. Under *Git Config > Target Repo* copy the link to your fork and under *Git Config > Target Revision* write the name of your branch.
+
+. Click *Create* to create the pattern.
+
+Verify that the rest of Operators have been installed:
+
+. To verify, in the OpenShift Container Platform web console, navigate to *Operators → Installed Operators* page.
+. Check that the Operators (*Advanced Cluster Management for Kubernetes*, *multicluster engine for Kubernetes*, *Node Feature Discovery Operator*, *Red Hat Openshift GitOps*) are installed with `Succeeded` status.
+
+Add a secret for `config-demo` application (from _values-secret-multicloud-gitops.yaml_) to *Vault* manually:
+
+. Go to Vault service route. URL can be found:
+
+.. by running command:
++
+[source,terminal]
+----
+oc -n vault get route vault -ojsonpath='{.spec.host}'
+----
++
+.. in *Openshift Container Platform* web console under *Networking > Routes* for `vault` project.
+
+. Log into the Vault using root token. Root token can be found by executing command:
++
+[source,terminal]
+----
+oc -n imperative get secrets vaultkeys -ojsonpath='{.data.vault_data_json}' | base64 -d
+----
++
+
+. After login go to `secret` catalog and clik *Create secret* and fill all the fields manually:
+
+.. *Path for this secret* is `global/config-demo` (from _values.yaml_ file for `config-demo` charts)
+
+.. Under *Secret data* key is `secret` (from _values-secret-multicloud-gitops.yaml_ file) and in next field put its value.
+
+.. Click *Add* and then *Save*.
+
+== Verification
+
+Go to the Hub ArgoCD and verify that all applications are synchronized. The URL can be found in *Openshift Container Platform* web console under *Networking > Routes* for the project `multicloud-gitops-amx-hub` or use command:
++
+[source,terminal]
+----
+oc -n multicloud-gitops-amx-hub get route hub-gitops-server -ojsonpath='{.spec.host}'
+----
++
+
+All applications should be `Healthy` and `Synced`:
 +
 .ArgoCD panel with `amx-app`
 image::multicloud-gitops-amx/multicloud-gitops-argocd-amx.png[Multicloud GitOps Hub with `amx-app`]
@@ -130,6 +198,3 @@ After the management hub is set up and works correctly, attach one or more manag
 For instructions on deploying the edge, refer to link:../mcg-managed-cluster/[Attach a managed cluster (edge) to the management hub].
 
 //For instructions on deploying the edge, refer to xref:/multicloud-gitops/mcg-managed-cluster.adoc#attach-managed-cluster[Attach a managed cluster (edge) to the management hub].
-
-
-
