@@ -1,7 +1,7 @@
 ---
 title: Managed cluster sites
 weight: 20
-aliases: /multicloud-gitops/mcg-managed-cluster/
+aliases: /multicloud-gitops-amx/mcg-amx-managed-cluster/
 ---
 
 :toc:

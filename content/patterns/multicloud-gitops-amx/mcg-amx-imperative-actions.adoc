@@ -1,7 +1,7 @@
 ---
 title: Imperative actions
 weight: 40
-aliases: /multicloud-gitops/mcg-imperative-actions/
+aliases: /multicloud-gitops-amx/mcg-amx-imperative-actions/
 ---
 
 :toc:

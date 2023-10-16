@@ -1,7 +1,7 @@
 ---
 title: Cluster sizing
 weight: 30
-aliases: /multicloud-gitops/mcg-cluster-sizing/
+aliases: /multicloud-gitops-amx/mcg-amx-cluster-sizing/
 ---
 
 :toc:
@@ -18,9 +18,9 @@ To understand cluster sizing requirements for the Multicloud GitOps pattern, con
 |===
 | Name | Kind | Namespace | Description
 
-| multicloud-gitops-hub
+| multicloud-gitops-amx-hub
 | Application
-| multicloud-gitops-hub
+| multicloud-gitops-amx-hub
 | Hub GitOps management
 
 | Red Hat Advanced Cluster Management
@@ -35,8 +35,6 @@ To understand cluster sizing requirements for the Multicloud GitOps pattern, con
 |===
 
 The Multicloud GitOps pattern also includes the Red Hat Advanced Cluster Management (RHACM) supporting operator that is installed by OpenShift GitOps using Argo CD.
-
-//include::modules/mcg-support-matrix.adoc[leveloffset=+1]
 
 [id="mcg-openshift-datacenter-hub-cluster-size"]
 == Multicloud GitOps pattern with OpenShift datacenter hub cluster size
