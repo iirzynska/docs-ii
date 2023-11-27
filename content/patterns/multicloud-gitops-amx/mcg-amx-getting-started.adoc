@@ -140,9 +140,9 @@ image::multicloud-gitops-amx/amx-validated-patter-operator.png[Install Validated
 
 After succeeded installation open *Validated Patterns Operator*, go to *Pattern* tab and click *Create Pattern*.
 
-. Fill *Name* of the pattern `multicloud-gitops-amx` and *Cluster Group Name* `hub` (from _values-global.yaml_ file).
+. Fill the *Name* of the pattern `multicloud-gitops-amx` and *Cluster Group Name* `hub` (from _values-global.yaml_ file).
 
-. Under *Git Config > Target Repo* copy the link to your fork and under *Git Config > Target Revision* write the name of your branch.(Figure 3)
+. Under *Git Config > Target Repo* copy the link to your fork and under *Git Config > Target Revision* write the name of your branch (Figure 3).
 
 . Click *Create* to create the pattern.
 +
