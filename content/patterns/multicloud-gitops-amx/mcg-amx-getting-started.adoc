@@ -16,7 +16,7 @@ aliases: /multicloud-gitops-amx/mcg-amx-getting-started/
 * An OpenShift cluster
  ** To create an OpenShift cluster, go to the https://console.redhat.com/[Red Hat Hybrid Cloud console] and select *Services \-> Containers \-> Create cluster*.
  ** The cluster must have a dynamic `StorageClass` to provision `PersistentVolumes`.
- ** link:../../multicloud-gitops-amx/mcg-amx-cluster-sizing.adoc[Cluster sizing] requirements.
+ ** link:../../multicloud-gitops-amx/mcg-amx-cluster-sizing[Cluster sizing] requirements.
 * Optional: A second OpenShift cluster for multicloud demonstration.
 //Replaced git and podman prereqs with the tooling dependencies page
 * https://hybrid-cloud-patterns.io/learn/quickstart/[Install the tooling dependencies].

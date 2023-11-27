@@ -1,5 +1,5 @@
 ---
-title: Multicloud GitOps with Intel AMX
+title: Intel AMX accelerated Multicloud GitOps
 date: 2023-10-05
 validated: false
 summary: This is extension of Multicloud GitOps pattern with additional application to show the value of using Intel® AMX.
@@ -23,7 +23,7 @@ links:
 :_content-type: CONCEPT
 
 [id="about-multicloud-gitops-amx-pattern"]
-== About the Multicloud GitOps with Intel AMX pattern
+== About the Intel AMX accelerated Multicloud GitOps pattern
 
 Use case::
 
@@ -185,4 +185,4 @@ image::multicloud-gitops-amx/amx-app-log.png[Logs from amx-app pod]
 == Next steps
 
 * link:mcg-amx-getting-started[Deploy the management hub] using Helm.
-* Add a managed cluster to link:mcg-managed-cluster[deploy the managed cluster piece using ACM].
+* Add a managed cluster to link:mcg-amx-managed-cluster[deploy the managed cluster piece using ACM].
