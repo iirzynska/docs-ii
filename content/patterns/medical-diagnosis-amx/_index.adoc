@@ -18,7 +18,6 @@ links:
   arch: https://www.redhat.com/architect/portfolio/architecturedetail?ppid=6
   help: https://groups.google.com/g/hybrid-cloud-patterns
   bugs: https://github.com/hybrid-cloud-patterns/medical-diagnosis-amx/issues
-ci: medicaldiag
 ---
 
 :toc:
@@ -83,21 +82,14 @@ The {med-pattern} uses the following products and technologies:
 
 [IMPORTANT]
 ====
-Presently, the {med-pattern} - AMX does not have an edge component. Edge deployment capabilities are planned as part of the pattern architecture for a future release.
+Presently, the Intel AMX accelerated {med-pattern} does not have an edge component. Edge deployment capabilities are planned as part of the pattern architecture for a future release.
 ====
 
 image::medical-diagnosis-amx/edge-medical-diagnosis-marketing-slide.png[link="/images/medical-diagnosis-amx/edge-medical-diagnosis-marketing-slide.png"]
 
 Components are running on OpenShift either at the data center, at the medical facility, or public cloud running OpenShift.
 
-[id="about-physical-schema-med"]
-=== About the physical schema
-
-The following diagram shows the components that are deployed with the various networks that connect them.
-
-image::medical-diagnosis-amx/physical-network.png[link="/images/medical-diagnosis-amx/physical-network.png"]
-
-The following diagram shows the components that are deployed with the the data flows and API calls between them.
+The diagram below shows the components that are deployed with the the data flows and API calls between them.
 
 image::medical-diagnosis-amx/physical-dataflow.png[link="/images/medical-diagnosis-amx/physical-dataflow.png"]
 
