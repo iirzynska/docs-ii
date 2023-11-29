@@ -1,5 +1,5 @@
 ---
-title: Medical Diagnosis - AMX
+title: Intel AMX accelerated Medical Diagnosis
 date: 2023-10-10
 validated: false
 summary: This pattern is based on a demo implementation of an automated data pipeline for chest X-ray analysis previously developed by Red Hat. The pattern is modified to utilize Intel AMX feature.
@@ -100,10 +100,6 @@ image::medical-diagnosis-amx/physical-network.png[link="/images/medical-diagnosi
 The following diagram shows the components that are deployed with the the data flows and API calls between them.
 
 image::medical-diagnosis-amx/physical-dataflow.png[link="/images/medical-diagnosis-amx/physical-dataflow.png"]
-
-== Recorded demo
-
-link:/videos/xray-deployment.svg[image:/videos/xray-deployment.svg[Demo\]]
 
 [id="next-steps_med-diag-index"]
 == Next steps

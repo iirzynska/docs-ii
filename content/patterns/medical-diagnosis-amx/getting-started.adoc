@@ -222,7 +222,6 @@ $ ./pattern.sh make update
 +
 This step might take some time, especially for the {ocp-data-short} Operator components to install and synchronize. The `./pattern.sh make install` command provides some progress updates during the installation process. It can take up to twenty minutes. Compare your `./pattern.sh make install` run progress with the following video that shows a successful installation.
 +
-image::/videos/xray-deployment.svg[link="/videos/xray-deployment.svg"]
 
 . Verify that the Operators have been installed.
 .. To verify, in the {ocp} web console, navigate to *Operators* → *Installed Operators* page.
@@ -294,7 +293,7 @@ Examine the `medical-diagnosis-hub` ArgoCD instance. You can track all the appli
 . Check that all applications are synchronized. There are thirteen different ArgoCD `applications` that are deployed as part of this pattern.
 
 [id="object-storage-setup"]
-= Set up object storage
+== Set up object storage
 
 Modified version of a Medical Diagnosis pattern requires to use on-prem object storage. Instead of a AWS S3 (or other cloud equivalent) user can set up the Ceph RGW object storage.
 To communicate with its API user can utilize aws-cli. The installation manual is available on https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions[Amazon website]
@@ -407,16 +406,15 @@ Go to the OpenShift UI under Workloads, select Deploymentconfigs for Project `xr
 Click `image-generator` and increase the pod count to 1.
 +
 image::medical-diagnosis-amx/start-image-flow.png[link="/images/medical-diagnosis-amx/start-image-flow.png"]
-
++
 OpenShift GitOps view should be similar to the following:
-
-image::gitops-view.png[]
-
++
+image::medical-diagnosis-amx/gitops-view.png[link="/images/medical-diagnosis-amx/gitops-view.png"]
++
 All applications should be healthy for pattern to work correctly, even if some applications may be OutOfSync.
-
 If any application is in 'unhealthy' state common solution is to sync the application. 
-
 For other issues please refer to https://validatedpatterns.io/patterns/medical-diagnosis/troubleshooting/
++
 
 
 //Module to be included

@@ -44,6 +44,11 @@ To understand cluster sizing requirements for the {med-pattern}, consider the fo
 | Operator
 | - knative-serving (knative-eventing)
 | Provides access to Knative Serving and Eventing functions
+
+| {rh-nfd}
+| Operator
+| openshift-nfd
+| Manages the detection and labeling of hardware features and configuration
 |===
 
 //AI: Removed the following since we have CI status linked on the patterns page
