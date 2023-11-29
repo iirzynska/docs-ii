@@ -21,6 +21,7 @@ links:
 :toc:
 :imagesdir: /images
 :_content-type: CONCEPT
+include::modules/comm-attributes.adoc[]
 
 [id="about-multicloud-gitops-amx-pattern"]
 == About the Intel AMX accelerated Multicloud GitOps pattern
