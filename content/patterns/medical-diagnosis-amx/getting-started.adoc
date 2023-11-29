@@ -407,16 +407,15 @@ Go to the OpenShift UI under Workloads, select Deploymentconfigs for Project `xr
 Click `image-generator` and increase the pod count to 1.
 +
 image::medical-diagnosis-amx/start-image-flow.png[link="/images/medical-diagnosis-amx/start-image-flow.png"]
-
++
 OpenShift GitOps view should be similar to the following:
-
-image::gitops-view.png[]
-
++
+image::medical-diagnosis-amx/gitops-view.png[link="/images/medical-diagnosis-amx/gitops-view.png"]
++
 All applications should be healthy for pattern to work correctly, even if some applications may be OutOfSync.
-
 If any application is in 'unhealthy' state common solution is to sync the application. 
-
 For other issues please refer to https://validatedpatterns.io/patterns/medical-diagnosis/troubleshooting/
++
 
 
 //Module to be included
