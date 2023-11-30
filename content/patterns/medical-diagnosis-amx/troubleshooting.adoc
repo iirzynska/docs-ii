@@ -4,10 +4,11 @@ weight: 40
 aliases: /medical-diagnosis/troubleshooting/
 ---
 
+include::modules/comm-attributes.adoc[]
+
 :toc:
 :imagesdir: /images
 :_content-type: REFERENCE
-include::modules/comm-attributes.adoc[]
 
 [id="med-understanding-the-makefile-troubleshooting"]
 === Understanding the Makefile

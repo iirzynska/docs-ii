@@ -3,10 +3,12 @@ title: Ideas for customization
 weight: 50
 aliases: /medical-diagnosis/ideas-for-customization/
 ---
+
+include::modules/comm-attributes.adoc[]
+
 :toc:
 :imagesdir: /images
 :_content-type: ASSEMBLY
-include::modules/comm-attributes.adoc[]
 
 //Module to be included
 //:_content-type: CONCEPT
