@@ -4,13 +4,14 @@ weight: 10
 aliases: /multicloud-gitops-amx/mcg-amx-getting-started/
 ---
 
+include::modules/comm-attributes.adoc[]
+
 :toc:
 :imagesdir: /images
 :_content-type: ASSEMBLY
-include::modules/comm-attributes.adoc[]
 
 [id="deploying-mcg-pattern"]
-== Deploying the Multicloud GitOps with AMX pattern
+== Deploying the {amx-mcg-pattern}
 
 .Prerequisites
 
@@ -209,7 +210,7 @@ All applications should be `Healthy` and `Synced`:
 .ArgoCD panel with `amx-app`
 image::multicloud-gitops-amx/multicloud-gitops-argocd-amx.png[Multicloud GitOps Hub with `amx-app`]
 
-Check the logs of a pod `amx-app` to verify if it uses *Intel AMX*. In the *OpenShift Container Platform* web console, navigate to *Workloads > Pods*. Change project to `amx-app` and open the *Logs* tab in the pod details. The appearance of avx_512_core_amx_bf16 flag on the list of compiled instructions confirms that AMX is used.
+Check the logs of a pod `amx-app` to verify if it uses *{intel-amx}*. In the *OpenShift Container Platform* web console, navigate to *Workloads > Pods*. Change project to `amx-app` and open the *Logs* tab in the pod details. The appearance of avx_512_core_amx_bf16 flag on the list of compiled instructions confirms that {intel-amx} is used.
 
 As part of this pattern, HashiCorp Vault has been installed. Refer to the section on https://validatedpatterns.io/secrets/vault/[Vault].
 

@@ -4,13 +4,14 @@ weight: 30
 aliases: /multicloud-gitops-amx/mcg-amx-cluster-sizing/
 ---
 
+include::modules/comm-attributes.adoc[]
+
 :toc:
 :imagesdir: /images
 :_content-type: ASSEMBLY
-include::modules/comm-attributes.adoc[]
 
 [id="about-openshift-cluster-sizing-mcg"]
-== About OpenShift cluster sizing for the Multicloud GitOps Pattern
+== About OpenShift cluster sizing for the {amx-mcg-pattern}
 
 The minimum requirements for an {ocp} cluster depend on your installation platform, for example:
 
@@ -18,7 +19,7 @@ The minimum requirements for an {ocp} cluster depend on your installation platfo
 
 * For bare-metal, see link:https://docs.openshift.com/container-platform/4.13/installing/installing_bare_metal/installing-bare-metal.html#installation-minimum-resource-requirements_installing-bare-metal[Installing {ocp} on bare metal].
 
-To understand cluster sizing requirements for the Multicloud GitOps pattern, consider the following components that the Multicloud GitOps pattern deploys on the datacenter or the hub OpenShift cluster:
+To understand cluster sizing requirements for the {amx-mcg-pattern}, consider the following components that the {amx-mcg-pattern} deploys on the datacenter or the hub OpenShift cluster:
 
 |===
 | Name | Kind | Namespace | Description
@@ -37,63 +38,25 @@ To understand cluster sizing requirements for the Multicloud GitOps pattern, con
 | Operator
 | openshift-operators
 | OpenShift GitOps
+
+| Node Feature Discovery
+| Operator
+| openshift-nfd
+| Manages the detection and labeling of hardware features and configuration (for example {intel-amx})
+
+| Red Hat OpenShift Data Foundation
+| Operator
+| openshift-storage
+| Cloud Native storage solution
 |===
 
-The Multicloud GitOps pattern also includes the Red Hat Advanced Cluster Management (RHACM) supporting operator that is installed by OpenShift GitOps using Argo CD.
+The {amx-mcg-pattern} also includes the Red Hat Advanced Cluster Management (RHACM) supporting operator that is installed by OpenShift GitOps using Argo CD.
 
 [id="mcg-openshift-datacenter-hub-cluster-size"]
-== Multicloud GitOps pattern with OpenShift datacenter hub cluster size
+== {amx-mcg-pattern} with OpenShift clusters sizes
 
-The Multicloud GitOps pattern has been tested with a defined set of specifically tested configurations that represent the most common combinations that Red Hat OpenShift Container Platform customers are using or deploying for the x86_64 architecture.
+The datacenter hub OpenShift cluster needs to be a bit bigger than the Factory/Edge clusters because this is where the developers will be running pipelines to build and deploy the {amx-mcg-pattern} on the cluster. The above cluster sizing is close to a minimum size for a Datacenter HUB cluster. In the next few sections we take some snapshots of the cluster utilization while the {amx-mcg-pattern} is running. Keep in mind that resources will have to be added as more developers are working building their applications.
 
-The datacenter hub OpenShift cluster uses the following the AWS deployment configuration:
+The recommended clusters sizes for datacenter hub and for managed datacenter are the same in this case:
 
-[cols="<,^,<,<"]
-|===
-| Node Type | Number of nodes | Cloud Provider | Instance Type
-
-| Control Plane
-| 4
-| Amazon Web Services
-| m5.xlarge
-
-| Worker
-| 3
-| Amazon Web Services
-| m5.xlarge
-|===
-
-The datacenter hub OpenShift cluster needs to be a bit bigger than the Factory/Edge clusters because this is where the developers will be running pipelines to build and deploy the Multicloud GitOps pattern on the cluster. The above cluster sizing is close to a minimum size for a Datacenter HUB cluster. In the next few sections we take some snapshots of the cluster utilization while the Multicloud GitOps pattern is running. Keep in mind that resources will have to be added as more developers are working building their applications.
-
-// This is what we might probably need - need to discuss this with the team
-[id="mcg-openshift-managed-datacenter-cluster-size-cluster-sizing"]
-== Multicloud GitOps pattern with OpenShift managed datacenter cluster size
-
-The standard datacenter deployment of an OpenShift cluster is 3 control plane nodes and 3 or more worker nodes.
-
-[cols="^,^,^,^"]
-|===
-| Node Type | Number of nodes | Cloud Provider | Instance Type
-
-| Control Plane/Worker
-| 3
-| Google Cloud
-| n1-standard-8
-
-| Control Plane/Worker
-| 3
-| Amazon Cloud Services
-| m5.2xlarge
-
-| Control Plane/Worker
-| 3
-| Microsoft Azure
-| Standard_D8s_v3
-|===
-
-
-//include::modules/mcg-aws-instance-types.adoc[leveloffset=+1]
-
-//include::modules/mcg-azure-instance-types.adoc[leveloffset=+1]
-
-//include::modules/mcg-gcp-instance-types.adoc[leveloffset=+1]
+include::modules/intel-recommended-cluster-sizing.adoc[]

@@ -4,10 +4,11 @@ weight: 40
 aliases: /multicloud-gitops-amx/mcg-amx-imperative-actions/
 ---
 
+include::modules/comm-attributes.adoc[]
+
 :toc:
 :imagesdir: /images
 :_content-type: ASSEMBLY
-include::modules/comm-attributes.adoc[]
 
 [id="mcg-using-kubernetes-cronjob-imperative-actions"]
 == Using kubernetes cronjobs to apply imperative actions

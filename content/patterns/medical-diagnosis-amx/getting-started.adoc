@@ -4,16 +4,17 @@ weight: 10
 aliases: /medical-diagnosis/getting-started/
 ---
 
+include::modules/comm-attributes.adoc[]
+
 :toc:
 :imagesdir: /images
 :_content-type: ASSEMBLY
-include::modules/comm-attributes.adoc[]
 
 //Module to be included
 //:_content-type: PROCEDURE
 //:imagesdir: ../../../images
 [id="deploying-med-pattern"]
-= Deploying the {med-pattern}
+= Deploying the {amx-med-pattern}
 
 .Prerequisites
 
@@ -25,10 +26,10 @@ include::modules/comm-attributes.adoc[]
 * An S3-capable Storage (OpenShift Data Foundation is recommended) set up in your private cloud for the x-ray images
 * The Helm binary, see link:https://helm.sh/docs/intro/install/[Installing Helm]
 For installation tooling dependencies, see link:https://validatedpatterns.io/learn/quickstart/[Patterns quick start].
-
++
 [NOTE]
 ====
-The {med-pattern} - AMX does not have a dedicated hub or edge cluster.
+The {amx-med-pattern} does not have a dedicated hub or edge cluster.
 ====
 
 [id="preparing-for-deployment"]
