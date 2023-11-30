@@ -22,7 +22,7 @@
 You might want to add resources when more developers are working on building their applications.
 ====
 
-The pattern was tested in the on-premiss environment with following hardware configuration (per cluster):
+The pattern was tested in the on-premises environment with following hardware configuration (per cluster):
 
 |===
 | Node type | Number of nodes | CPU | Memory | Storage
