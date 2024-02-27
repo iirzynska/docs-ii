@@ -27,6 +27,7 @@
 :ie: Industrial Edge
 :mcg-pattern: Multicloud GitOps pattern
 :amx-mcg-pattern: Intel AMX accelerated Multicloud GitOps pattern
+:amx-rhoai-mcg-pattern: Intel AMX accelerated Multicloud GitOps pattern with Openshift AI
 :mcg: multicloud GitOps
 :med-pattern: Medical Diagnosis pattern
 :amx-med-pattern: Intel AMX accelerated Medical Diagnosis pattern
@@ -151,6 +152,7 @@
 :Azure: Microsoft Azure
 // Red Hat OpenShift AI
 :rh-oai: Red{nbsp}Hat OpenShift Data Science
+:rhoai: Red{nbsp}Hat OpenShift AI
 :oai: OpenShift Data Science
 // Icons
 :grid: grid.png

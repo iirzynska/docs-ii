@@ -1,7 +1,7 @@
 ---
 title: Getting started
 weight: 10
-aliases: /multicloud-gitops-rhods-amx/mcg-rhods-amx-getting-started/
+aliases: /multicloud-gitops-amx-rhoai/mcg-amx-rhoai-getting-started/
 ---
 
 include::modules/comm-attributes.adoc[]
@@ -11,14 +11,14 @@ include::modules/comm-attributes.adoc[]
 :_content-type: ASSEMBLY
 
 [id="deploying-mcg-pattern"]
-== Deploying the {amx-mcg-pattern}
+== Deploying the {amx-rhoai-mcg-pattern}
 
 .Prerequisites
 
 * An OpenShift cluster
  ** To create an OpenShift cluster, go to the https://console.redhat.com/[Red Hat Hybrid Cloud console] and select *Services \-> Containers \-> Create cluster*.
  ** The cluster must have a dynamic `StorageClass` to provision `PersistentVolumes`.
- ** link:../../multicloud-gitops-rhods-amx/mcg-rhods-amx-cluster-sizing[Cluster sizing] requirements.
+ ** link:../../multicloud-gitops-amx-rhoai/mcg-amx-rhoai-cluster-sizing[Cluster sizing] requirements.
 * Optional: A second OpenShift cluster for multicloud demonstration.
 //Replaced git and podman prereqs with the tooling dependencies page
 * https://validatedpatterns.io/learn/quickstart/[Install the tooling dependencies].
@@ -32,13 +32,13 @@ public or private cloud by using https://console.redhat.com/openshift/create[Red
 
 . https://validatedpatterns.io/learn/quickstart/[Install the tooling dependencies].
 +
-//[ii]remember to give proper links!!!
-. Fork the https://github.com/validatedpatterns-sandbox/amx-accelerated-multicloud-gitops[multicloud-gitops-amx] repository on GitHub.
+
+. Fork the https://github.com/validatedpatterns-sandbox/amx-accelerated-rhoai-multicloud-gitops/[amx-accelerated-rhoai-multicloud-gitops] repository on GitHub.
 . Clone the forked copy of this repository.
 +
 [source,terminal]
 ----
-git clone git@github.com:your-username/amx-accelerated-multicloud-gitops.git
+git clone git@github.com:your-username/amx-accelerated-rhoai-multicloud-gitops.git
 ----
 
 . Create a local copy of the secret values file that can safely include credentials for the config-demo application and edit it if you want to customize the secret. If not, the framework generates a random password.
@@ -114,12 +114,13 @@ Verify that the Operators have been installed.
 . Check that the following Operators are installed with  `Succeeded` status (Figure 1): 
 * *Advanced Cluster Management for Kubernetes* 
 * *multicluster engine for Kubernetes* 
-* *Node Feature Discovery Operator* 
 * *Red Hat Openshift GitOps*
 * *Validated Patterns Operator*
+* *OpenVIONO Toolkit Operator*
+* *Red Hat Openshift AI*
 +
 .List of Installed Operators for Multicloud GitOps Validated Pattern with AMX
-image::multicloud-gitops-amx/amx-installed-operators.png[Multicloud GitOps Hub with AMX installed operators,role="related thumb right"]
+image::multicloud-gitops-amx-rhoai/amx-rhoai-installed-operators.png[???AMX accelerated Multicloud GitOps Hub with Openshift AI installed operators,role="related thumb right"]
 +
 
 
@@ -132,7 +133,7 @@ To install the *Validated Patterns Operator*:
 . Search for *Validated Patterns Operator*, open it and click *Install*.
 +
 .Instal Validated Patterns Operator
-image::multicloud-gitops-amx/amx-validated-patter-operator.png[Install Validated Patterns Operator,scale=50]
+image::multicloud-gitops-amx-rhoai/amx-rhoai-validated-patter-operator.png[???Install Validated Patterns Operator,scale=50]
 +
 . Choose default settings for the installation mode, namespaces and update strategy and confirm it by clicking *Install*.
 
@@ -142,14 +143,14 @@ image::multicloud-gitops-amx/amx-validated-patter-operator.png[Install Validated
 
 After succeeded installation open *Validated Patterns Operator*, go to *Pattern* tab and click *Create Pattern*.
 
-. Fill the *Name* of the pattern `multicloud-gitops-amx` and *Cluster Group Name* `hub` (from _values-global.yaml_ file).
+. Fill the *Name* of the pattern `multicloud-gitops-amx-rhoai` and *Cluster Group Name* `hub` (from _values-global.yaml_ file).
 
 . Under *Git Config > Target Repo* copy the link to your fork and under *Git Config > Target Revision* write the name of your branch (Figure 3).
 
 . Click *Create* to create the pattern.
 +
 .Create Pattern Form
-image::multicloud-gitops-amx/amx-create-pattern.png[Create pattern Multicloud GitOps with AMX]
+image::multicloud-gitops-amx-rhoai/amx-rhoai-create-pattern.png[Create pattern AMX accelerated Multicloud GitOps with Openshift AI]
 +
 
 
@@ -158,9 +159,10 @@ Verify that the rest of Operators have been installed:
 . To verify, in the *OpenShift Container Platform* web console, navigate to *Operators → Installed Operators* page.
 . Check that the following Operators are installed with  `Succeeded` status (Figure 1): 
 * *Advanced Cluster Management for Kubernetes* 
-* *multicluster engine for Kubernetes* 
-* *Node Feature Discovery Operator* 
+* *multicluster engine for Kubernetes*
 * *Red Hat Openshift GitOps*
+* *OpenVIONO Toolkit Operator*
+* *Red Hat Openshift AI*
 
 Add a secret for `config-demo` application (from _values-secret-multicloud-gitops.yaml_) to *Vault* manually:
 
@@ -192,25 +194,66 @@ oc -n imperative get secrets vaultkeys -ojsonpath='{.data.vault_data_json}' | ba
 .. Click *Add* and then *Save*.
 +
 .Create secret
-image::multicloud-gitops-amx/amx-secret-vault.png[Create secret in the vault]
+image::multicloud-gitops-amx-rhoai/amx-rhoai-secret-vault.png[Create secret in the vault]
 +
 
 
 == Verification
 
-Go to the Hub ArgoCD and verify that all applications are synchronized. The URL can be found in *Openshift Container Platform* web console under *Networking > Routes* for the project `multicloud-gitops-amx-hub` or use command:
+Go to the Hub ArgoCD and verify that all applications are synchronized. The URL can be found in *Openshift Container Platform* web console under *Networking > Routes* for the project `multicloud-gitops-amx-rhoai-hub` or use command:
 
 [source,terminal]
 ----
-oc -n multicloud-gitops-amx-hub get route hub-gitops-server -ojsonpath='{.spec.host}'
+oc -n multicloud-gitops-amx-rhoai-hub get route hub-gitops-server -ojsonpath='{.spec.host}'
 ----
 
 All applications should be `Healthy` and `Synced`:
 
 .ArgoCD panel with `amx-app`
-image::multicloud-gitops-amx/multicloud-gitops-argocd-amx.png[Multicloud GitOps Hub with `amx-app`]
+image::multicloud-gitops-amx/multicloud-gitops-argocd-amx-rhoai.png[Multicloud GitOps Hub with `amx-app`]
 
-Check the logs of a pod `amx-app` to verify if it uses *{intel-amx}*. In the *OpenShift Container Platform* web console, navigate to *Workloads > Pods*. Change project to `amx-app` and open the *Logs* tab in the pod details. The appearance of avx_512_core_amx_bf16 flag on the list of compiled instructions confirms that {intel-amx} is used.
+== Enablement
+
+== Intel® Advanced Matrix Extensions Instructions
+
+The kernel detects Intel® AMX at run-time, there is no need to enable and configure it additionally to improve performance.
+
+Verify if the *openvino-notebooks-v2022.3-1* build is completed under *Builds* > *Builds*.
+
+In the RHODS console open Jupyter by clicking *Launch application*, choose *OpenVINO™ Toolkit v2022.3* notebook image, *Large* container size and start the notebook server.
+image:openvino_toolkit_1.PNG[openvino_toolkit_1]
+
+On the Launcher window choose Notebook with *Python 3 (ipykernel)*.
+image:openvino_toolkit_2.PNG[openvino_toolkit_2]
+
+All necessary tools like *Model Downloader* (https://docs.openvino.ai/2022.3/omz_tools_downloader.html#installation) and *Benchmark Python Tool* (https://docs.openvino.ai/2022.3/openvino_inference_engine_tools_benchmark_tool_README.html#doxid-openvino-inference-engine-tools-benchmark-tool-r-e-a-d-m-e) are built in and ready to use.
+
+To start work with notebook set the environment variable to  view compiled instructions and control the usage of AMX:
+
+----
+%env ONEDNN_VERBOSE=1
+----
+
+Download the BERT-Large model compatible with FP32&BF16 precision (in this case https://docs.openvino.ai/2022.3/omz_models_model_bert_large_uncased_whole_word_masking_squad_0001.html):
+
+----
+!omz_downloader --name bert-large-uncased-whole-word-masking-squad-0001
+----
+
+Go to the directory with downloaded model and run the benchmark tool with parameter *infer_precision bf16* to use BF16 precision:
+
+----
+cd /opt/app-root/src/intel/bert-large-uncased-whole-word-masking-squad-0001/FP32/
+
+!benchmark_app -m bert-large-uncased-whole-word-masking-squad-0001.xml -infer_precision bf16
+----
+
+In ONEDNN verbose you should see *avx_512_core_amx*, what confirms that AMX instructions are being used.
+
+To compare results without AMX you may run this benchmark with different precision f.e.
+FP32.
+
+// Check the logs of a pod `amx-app` to verify if it uses *{intel-amx}*. In the *OpenShift Container Platform* web console, navigate to *Workloads > Pods*. Change project to `amx-app` and open the *Logs* tab in the pod details. The appearance of avx_512_core_amx_bf16 flag on the list of compiled instructions confirms that {intel-amx} is used.
 
 As part of this pattern, HashiCorp Vault has been installed. Refer to the section on https://validatedpatterns.io/secrets/vault/[Vault].
 
@@ -219,6 +262,5 @@ As part of this pattern, HashiCorp Vault has been installed. Refer to the sectio
 
 After the management hub is set up and works correctly, attach one or more managed clusters to the architecture.
 
-For instructions on deploying the edge, refer to link:../mcg-amx-managed-cluster/[Attach a managed cluster (edge) to the management hub].
+For instructions on deploying the edge, refer to link:../mcg-amx-rhoai-managed-cluster/[Attach a managed cluster (edge) to the management hub].
 
-//For instructions on deploying the edge, refer to xref:/multicloud-gitops/mcg-managed-cluster.adoc#attach-managed-cluster[Attach a managed cluster (edge) to the management hub].
