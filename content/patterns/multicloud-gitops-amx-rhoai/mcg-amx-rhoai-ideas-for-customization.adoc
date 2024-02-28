@@ -1,6 +1,6 @@
 ---
 title: Ideas for customization
-weight: 60
+weight: 80
 aliases: /multicloud-gitops-amx/mcg-amx-ideas-for-customization/
 ---
 

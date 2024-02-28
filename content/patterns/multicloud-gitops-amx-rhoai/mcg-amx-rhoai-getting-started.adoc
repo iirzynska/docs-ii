@@ -83,7 +83,7 @@ git push origin my-branch
 . Deploy the pattern by running `./pattern.sh make install` or by using the link:/infrastructure/using-validated-pattern-operator/[Validated Patterns Operator] - both methods are described below.
 
 [id="deploying-cluster-using-patternsh-file"]
-== Deploying the cluster by using the pattern.sh file
+=== Deploying the cluster by using the pattern.sh file
 
 To deploy the cluster by using the `pattern.sh` file, complete the following steps:
 
@@ -116,7 +116,7 @@ Verify that the Operators have been installed.
 * *multicluster engine for Kubernetes* 
 * *Red Hat Openshift GitOps*
 * *Validated Patterns Operator*
-* *OpenVIONO Toolkit Operator*
+* *OpenVINO Toolkit Operator*
 * *Red Hat Openshift AI*
 +
 .List of Installed Operators for Multicloud GitOps Validated Pattern with AMX
@@ -124,7 +124,7 @@ image::multicloud-gitops-amx-rhoai/amx-rhoai-installed-operators.png[???AMX acce
 +
 
 
-== Deploying the cluster by using the Validated Patterns Operator
+=== Deploying the cluster by using the Validated Patterns Operator
 
 To install the *Validated Patterns Operator*:
 
@@ -161,42 +161,8 @@ Verify that the rest of Operators have been installed:
 * *Advanced Cluster Management for Kubernetes* 
 * *multicluster engine for Kubernetes*
 * *Red Hat Openshift GitOps*
-* *OpenVIONO Toolkit Operator*
+* *OpenVINO Toolkit Operator*
 * *Red Hat Openshift AI*
-
-Add a secret for `config-demo` application (from _values-secret-multicloud-gitops.yaml_) to *Vault* manually:
-
-. Go to Vault service route. URL can be found:
-
-.. by running command:
-+
-[source,terminal]
-----
-oc -n vault get route vault -ojsonpath='{.spec.host}'
-----
-+
-.. in *Openshift Container Platform* web console under *Networking > Routes* for `vault` project.
-
-. Log into the Vault using root token. Root token can be found by executing command:
-+
-[source,terminal]
-----
-oc -n imperative get secrets vaultkeys -ojsonpath='{.data.vault_data_json}' | base64 -d
-----
-+
-
-. After login go to `secret` catalog and clik *Create secret* and fill all the fields manually (Figure 2):
-
-.. *Path for this secret* is `global/config-demo` (from _values.yaml_ file for `config-demo` charts)
-
-.. Under *Secret data* key is `secret` (from _values-secret-multicloud-gitops.yaml_ file) and in next field put its value.
-
-.. Click *Add* and then *Save*.
-+
-.Create secret
-image::multicloud-gitops-amx-rhoai/amx-rhoai-secret-vault.png[Create secret in the vault]
-+
-
 
 == Verification
 
@@ -210,50 +176,8 @@ oc -n multicloud-gitops-amx-rhoai-hub get route hub-gitops-server -ojsonpath='{.
 All applications should be `Healthy` and `Synced`:
 
 .ArgoCD panel with `amx-app`
-image::multicloud-gitops-amx/multicloud-gitops-argocd-amx-rhoai.png[Multicloud GitOps Hub with `amx-app`]
+image::multicloud-gitops-amx-rhoai/multicloud-gitops-argocd-amx-rhoai.png[Multicloud GitOps Hub with rhods and openvino toolkit]
 
-== Enablement
-
-== Intel® Advanced Matrix Extensions Instructions
-
-The kernel detects Intel® AMX at run-time, there is no need to enable and configure it additionally to improve performance.
-
-Verify if the *openvino-notebooks-v2022.3-1* build is completed under *Builds* > *Builds*.
-
-In the RHODS console open Jupyter by clicking *Launch application*, choose *OpenVINO™ Toolkit v2022.3* notebook image, *Large* container size and start the notebook server.
-image:openvino_toolkit_1.PNG[openvino_toolkit_1]
-
-On the Launcher window choose Notebook with *Python 3 (ipykernel)*.
-image:openvino_toolkit_2.PNG[openvino_toolkit_2]
-
-All necessary tools like *Model Downloader* (https://docs.openvino.ai/2022.3/omz_tools_downloader.html#installation) and *Benchmark Python Tool* (https://docs.openvino.ai/2022.3/openvino_inference_engine_tools_benchmark_tool_README.html#doxid-openvino-inference-engine-tools-benchmark-tool-r-e-a-d-m-e) are built in and ready to use.
-
-To start work with notebook set the environment variable to  view compiled instructions and control the usage of AMX:
-
-----
-%env ONEDNN_VERBOSE=1
-----
-
-Download the BERT-Large model compatible with FP32&BF16 precision (in this case https://docs.openvino.ai/2022.3/omz_models_model_bert_large_uncased_whole_word_masking_squad_0001.html):
-
-----
-!omz_downloader --name bert-large-uncased-whole-word-masking-squad-0001
-----
-
-Go to the directory with downloaded model and run the benchmark tool with parameter *infer_precision bf16* to use BF16 precision:
-
-----
-cd /opt/app-root/src/intel/bert-large-uncased-whole-word-masking-squad-0001/FP32/
-
-!benchmark_app -m bert-large-uncased-whole-word-masking-squad-0001.xml -infer_precision bf16
-----
-
-In ONEDNN verbose you should see *avx_512_core_amx*, what confirms that AMX instructions are being used.
-
-To compare results without AMX you may run this benchmark with different precision f.e.
-FP32.
-
-// Check the logs of a pod `amx-app` to verify if it uses *{intel-amx}*. In the *OpenShift Container Platform* web console, navigate to *Workloads > Pods*. Change project to `amx-app` and open the *Logs* tab in the pod details. The appearance of avx_512_core_amx_bf16 flag on the list of compiled instructions confirms that {intel-amx} is used.
 
 As part of this pattern, HashiCorp Vault has been installed. Refer to the section on https://validatedpatterns.io/secrets/vault/[Vault].
 

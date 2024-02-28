@@ -40,10 +40,17 @@
 :helm-chart: Helm chart
 // Intel
 :intel-amx: Intel AMX
+:intel-qat: Intel QAT
 :intel-amx-full: Intel Advanced Matrix Extensions
+:intel-qat-full: Intel QuickAssist Technology
 :intel-4th-gen-xeon: 4th Generation Intel Xeon
+:intel-5th-gen-xeon: 5th Generation Intel Xeon
 :intel-4th-gen-xeon-processors: 4th Generation Intel Xeon Scalable Processors
+:intel-5th-gen-xeon-processors: 5th Generation Intel Xeon Scalable Processors
 :intel-4th-gen-xeon-amx: 4th Gen Intel Xeon Scalable processors with Intel Advanced Matrix Extensions (Intel AMX)
+:intel-5th-gen-xeon-amx: 5th Gen Intel Xeon Scalable processors with Intel Advanced Matrix Extensions (Intel AMX)
+:intel-4th-gen-xeon-qat: 4th Gen Intel Xeon Scalable processors with Intel QuickAssist (Intel QAT)
+:intel-5th-gen-xeon-qat: 5th Gen Intel Xeon Scalable processors with Intel QuickAssist (Intel QAT)
 //Operators
 :validated-patterns-op: Validated Patterns Operator
 :grafana-op: Grafana Operator

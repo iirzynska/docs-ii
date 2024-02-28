@@ -1,6 +1,6 @@
 ---
-title: Schematic diagrams
-weight: 10
+title: Architecture details
+weight: 40
 aliases: /multicloud-gitops-amx-rhoai/mcg-amx-rhoai-schematic-diagrams/
 ---
 
@@ -18,7 +18,7 @@ The following figure provides a schematic diagram overview of the complete solut
 
 //figure 3 originally
 .Overview schematic diagram of the complete solution
-image::multicloud-gitops-rhoai-amx/schema-gitops.png[Physical Architecture]
+image::multicloud-gitops-amx-rhoai/schema-gitops.png[Physical Architecture]
 
 Subsequent schematic diagrams provide details on:
 
@@ -33,7 +33,7 @@ The following figure provides a schematic diagram showing the setup of the manag
 
 //figure 4 originally
 .Schematic diagram of bootstrapping the management hub
-image::multicloud-gitops-rhoai-amx/spi-multi-cloud-gitops-sd-install.png[Schematic diagram of bootstrapping the management hub]
+image::multicloud-gitops-amx-rhoai/spi-multi-cloud-gitops-sd-install.png[Schematic diagram of bootstrapping the management hub]
 
 * Set up the OpenShift Container Platform that hosts the Management Hub. The OpenShift installation program provides flexible ways to install OpenShift. An Ansible playbook starts the installation with necessary configurations.
 
@@ -50,7 +50,7 @@ The following figure provides a schematic diagram showing remaining activities a
 
 //figure 5 originally
 .Schematic diagram of hybrid multi-cloud management with GitOps
-image::multicloud-gitops-rhoai-amx/spi-multi-cloud-gitops-sd-security.png[Schematic diagram of hybrid multi-cloud management with GitOps]
+image::multicloud-gitops-amx-rhoai/spi-multi-cloud-gitops-sd-security.png[Schematic diagram of hybrid multi-cloud management with GitOps]
 
 * Manifest and configuration are set as code template in the form of a `Kustomization` YAML file. The file describes the desired end state of the managed cluster. When complete, the `Kustomization` YAML file is pushed into the source control management repository with a version assigned to each update.
 * OpenShift GitOps monitors the repository and detects changes in the repository.
@@ -65,7 +65,7 @@ The following figure provides a schematic diagram showing how secrets are handle
 
 //figure 6 originally
 .Schematic showing the setup and use of external secrets management
-image::multicloud-gitops-rhoai-amx/spi-multi-cloud-gitops-sd-security.png[Schematic showing the setup and use of external secrets management]
+image::multicloud-gitops-amx-rhoai/spi-multi-cloud-gitops-sd-security.png[Schematic showing the setup and use of external secrets management]
 
 * During setup, the token to securely access HashiCorp Vault is stored in Ansible Vault. It is encrypted to protect sensitive content.
 

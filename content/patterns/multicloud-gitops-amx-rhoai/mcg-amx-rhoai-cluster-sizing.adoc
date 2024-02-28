@@ -1,6 +1,6 @@
 ---
 title: Cluster sizing
-weight: 30
+weight: 60
 aliases: /multicloud-gitops-amx/mcg-amx-cluster-sizing/
 ---
 
