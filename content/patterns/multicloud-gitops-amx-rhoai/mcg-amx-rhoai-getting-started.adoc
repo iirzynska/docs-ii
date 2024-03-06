@@ -18,6 +18,7 @@ include::modules/comm-attributes.adoc[]
 * An OpenShift cluster
  ** To create an OpenShift cluster, go to the https://console.redhat.com/[Red Hat Hybrid Cloud console] and select *Services \-> Containers \-> Create cluster*.
  ** The cluster must have a dynamic `StorageClass` to provision `PersistentVolumes`.
+* The cluster must have worker nodes with 5th Generation Intel Xeon Scalable Processors
  ** link:../../multicloud-gitops-amx-rhoai/mcg-amx-rhoai-cluster-sizing[Cluster sizing] requirements.
 * Optional: A second OpenShift cluster for multicloud demonstration.
 //Replaced git and podman prereqs with the tooling dependencies page
@@ -119,8 +120,8 @@ Verify that the Operators have been installed.
 * *OpenVINO Toolkit Operator*
 * *Red Hat Openshift AI*
 +
-.List of Installed Operators for Multicloud GitOps Validated Pattern with AMX
-image::multicloud-gitops-amx-rhoai/amx-rhoai-installed-operators.png[???AMX accelerated Multicloud GitOps Hub with Openshift AI installed operators,role="related thumb right"]
+.List of Installed Operators for AMX accelerated Multicloud GitOps with Openshift AI pattern
+image::multicloud-gitops-amx-rhoai/amx-rhoai-installed-operators.png[AMX accelerated Multicloud GitOps Hub with Openshift AI installed operators,role="related thumb right"]
 +
 
 
@@ -131,15 +132,24 @@ To install the *Validated Patterns Operator*:
 . Log in to the *Openshift Container Platform* web console and select *Operators > OperatorHub*.
 
 . Search for *Validated Patterns Operator*, open it and click *Install*.
+
 +
-.Instal Validated Patterns Operator
-image::multicloud-gitops-amx-rhoai/amx-rhoai-validated-patter-operator.png[???Install Validated Patterns Operator,scale=50]
+.Install Validated Patterns Operator step 1
+image::multicloud-gitops-amx-rhoai/amx-rhoai-validated-pattern-operator-1.png[Install Validated Patterns Operator,scale=50]
 +
+
 . Choose default settings for the installation mode, namespaces and update strategy and confirm it by clicking *Install*.
+
++
+.Install Validated Patterns Operator step 2
+image::multicloud-gitops-amx-rhoai/amx-rhoai-validated-pattern-operator-2.png[Install Validated Patterns Operator,scale=50]
++
 
 . Select *Operators > Installed Operators*.
 
 . Ensure that *Validated Patterns Operator* is listed in the `openshift-operators` project with a status `Succeeded`.
+
+== Create {amx-rhoai-mcg-pattern}
 
 After succeeded installation open *Validated Patterns Operator*, go to *Pattern* tab and click *Create Pattern*.
 
@@ -175,11 +185,19 @@ oc -n multicloud-gitops-amx-rhoai-hub get route hub-gitops-server -ojsonpath='{.
 
 All applications should be `Healthy` and `Synced`:
 
-.ArgoCD panel with `amx-app`
+.ArgoCD panel with all applications
 image::multicloud-gitops-amx-rhoai/multicloud-gitops-argocd-amx-rhoai.png[Multicloud GitOps Hub with rhods and openvino toolkit]
 
 
 As part of this pattern, HashiCorp Vault has been installed. Refer to the section on https://validatedpatterns.io/secrets/vault/[Vault].
+
+== Start your workload
+
+Now, you are ready to use installed pattern. 
+
+* Test basic application deployment and setup with link:../mcg-amx-rhoai-demo-script/[*Hello World Demo*]. 
+
+* Jump straight to AI workload example with link:../mcg-amx-rhoai-bert-script/[*Intel AMX Demo*].
 
 [id="next-steps_mcg-getting-started"]
 == Next steps

@@ -106,26 +106,16 @@ This solution also uses a variety of _observability tools_ including the Prometh
 
 
 // RHODS pattern description
-The basic {mcg-pattern} has been extended to highlight the *{intel-5th-gen-xeon-processors}* capabilities, offering developers a streamlined pathway to accelerate their workloads through the integration of cutting-edge *{intel-amx}*, fostering efficiency and performance optimization in AI workloads.
+The basic {mcg-pattern} has been extended to highlight the *{intel-5th-gen-xeon-processors}* capabilities, offering developers a streamlined pathway to accelerate their workloads through the integration of cutting-edge *{intel-amx}*, providing efficiency and performance optimization in AI workloads.
 
 The basic pattern has been extended with two components: Openshift AI and OpenVINO Toolkit Operator. 
 
 * Openshift AI, serves as a robust AI/ML platform for the creation of AI-driven applications and provides a collaborative environment for data scientists and developers that helps to move easily from experiment to production. It offers Jupyter application with selection of notebook servers, equipped with pre-configured environments and necessary support and optimizations (such as CUDA, PyTorch, Tensorflow, HabanaAI, etc.).
 
-* OpenVINO Toolkit Operator manages OpenVINO components within Openshift enviroment. First one, OpenVINO™ Model Server (OVMS) is a scalable, high-performance solution for serving machine learning models optimized for Intel® architectures. The other component, that was used in the proposed pattern is Notebook resource. This element integrates JupyterHub from OpenShift AI with a container image that includes developer tools from the OpenVINO toolkit. It also enables selecting a defined image OpenVINO™ Toolkit from the Jupyter Spawner choice list.
+* OpenVINO Toolkit Operator manages OpenVINO components within Openshift environment. First one, OpenVINO™ Model Server (OVMS) is a scalable, high-performance solution for serving machine learning models optimized for Intel® architectures. The other component, that was used in the proposed pattern is Notebook resource. This element integrates Jupyter from OpenShift AI with a container image that includes developer tools from the OpenVINO toolkit. It also enables selecting a defined image OpenVINO™ Toolkit from the Jupyter Spawner choice list.
 
-// The basic pattern has been extended by the AI application named `amx-app`. It runs Deep Interest Evolution Network (DIEN) inference using the Intel-optimized TensorFlow and measures its accuracy. DIEN is a machine learning model used in the field of recommender systems, particularly in the domain of personalized content recommendation.
-
-// Since the `amx-app` application must be running on the node with CPU supporting {intel-amx}, Node Feature Discovery Operator (NFD) is deployed as a part of this pattern.
-// NFD manages the detection of hardware features and configuration in an OpenShift Container Platform cluster. It labels the nodes with hardware-specific information. The kernel detects {intel-amx} at run-time, so there is no need to enable and configure it separately.
-
-// A deployment of `amx-app` was created based on instructions from link:https://github.com/IntelAI/models/blob/master/quickstart/recommendation/tensorflow/dien/inference/cpu/README_SPR_DEV_CAT.md[Model Zoo for Intel® Architecture repository - TF DIEN inference] and uses  link:https://hub.docker.com/layers/intel/recommendation/tf-spr-dien-inference/images/sha256-085c43d838197ae92db8a056da254506abd667951a3ae11e47da48f2f47cb92f?context=explore[intel/recommendation:tf-spr-dien-inference image].
-
-// An `amx-app` use persistent volume claim to download and prepare dataset. When the dataset is ready, an application runs and measures the inference accuracy. By enabling ONEDNN verbose all the compiled instructions are shown in the logs. The appearance of the __avx512_core_amx_bf16__ flag confirms that {intel-amx} is used.
-
-//figure 7 originally - change it!!!
-// .Logs from `amx-app` pod
-// image::multicloud-gitops-amx-rhoai/amx-rhoai-app-log.png[Logs from amx-app pod]
+As an example of AI workload in the pattern serves BERT-Large model. It is a wide known model used by various enterprise Natural Language Processing workloads. Intel has demonstrated, that *{intel-5th-gen-xeon-processors}* perform up to *1.49* times better in NLP flows vs. prior generation:
+https://community.intel.com/t5/Blogs/Tech-Innovation/Data-Center/Level-Up-Your-NLP-applications-on-Red-Hat-OpenShift-and-5th-Gen/post/1572320[Level-Up-Your-NLP-applications-on-Red-Hat-OpenShift-and-5th-Gen]
 
 [id="next-steps_mcg-index"]
 == Next steps

@@ -1,6 +1,6 @@
 ---
 title: Hello-world Demo
-weight: 30
+weight: 20
 aliases: /multicloud-gitops-amx-rhoai/demo/
 ---
 
