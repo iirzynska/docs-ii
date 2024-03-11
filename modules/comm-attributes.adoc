@@ -34,6 +34,8 @@
 :med: medical diagnosis
 :multi-devsec-pattern: Multi-cluster DevSecOps pattern
 :multi-devsec: multi-cluster DevSecOps
+:trvlops-pattern: TravelOps pattern
+:trvlops: TravelOps pattern
 // Associated products
 :hashicorp-vault: HashiCorp Vault
 :hashicorp-vault-short: Vault
@@ -161,5 +163,10 @@
 :rh-oai: Red{nbsp}Hat OpenShift Data Science
 :rhoai: Red{nbsp}Hat OpenShift AI
 :oai: OpenShift Data Science
+// Red Hat Service Mesh
+:rh-sm: Red{nbsp}Hat Service Mesh
+:rh-kiali: Kiali
+:rh-jaeger: Jaeger Distributed Tracing
+:rh-elastic: ElasticSearch
 // Icons
 :grid: grid.png
