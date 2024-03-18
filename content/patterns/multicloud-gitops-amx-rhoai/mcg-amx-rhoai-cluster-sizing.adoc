@@ -24,9 +24,9 @@ To understand cluster sizing requirements for the {amx-rhoai-mcg-pattern}, consi
 |===
 | Name | Kind | Namespace | Description
 
-| multicloud-gitops-amx-hub
+| multicloud-gitops-amx-rhoai-hub
 | Application
-| multicloud-gitops-amx-hub
+| multicloud-gitops-amx-rhoai-hub
 | Hub GitOps management
 
 | Red Hat Advanced Cluster Management

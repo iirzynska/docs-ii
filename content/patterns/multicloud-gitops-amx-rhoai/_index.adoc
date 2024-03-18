@@ -62,12 +62,6 @@ Benefits of Hybrid Multicloud management with GitOps:
 .Overview of the solution including the business drivers, management hub, and the clusters under management
 image::multicloud-gitops-amx-rhoai/hybrid-multicloud-management-gitops-hl-arch.png[Multicloud Architecture]
 
-//Add something about hardware running with Xeons
-In the following figure, logically, this solution can be viewed as being composed of an automation component, unified management including secrets management, and the clusters under management, all running on top of a user-chosen mixture of on-premise data centers and public clouds.
-
-//figure 2 originally
-.Logical diagram of {intel-amx} accelerated hybrid multi-cloud management with GitOps
-image::multicloud-gitops-amx-rhoai/amx-rhoai-logical-diagram.png[Logical Architecture]
 
 [id="about-technology"]
 == About the technology
