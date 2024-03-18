@@ -18,7 +18,7 @@ include::modules/comm-attributes.adoc[]
 * An OpenShift cluster
  ** To create an OpenShift cluster, go to the https://console.redhat.com/[Red Hat Hybrid Cloud console] and select *Services \-> Containers \-> Create cluster*.
  ** The cluster must have a dynamic `StorageClass` to provision `PersistentVolumes`.
-* The cluster must have worker nodes with 5th Generation Intel Xeon Scalable Processors
+* The cluster must have worker nodes with Intel AMX feature enabled, so the *5th Generation of Intel Xeon Processors* is highly recommended
  ** link:../../multicloud-gitops-amx-rhoai/mcg-amx-rhoai-cluster-sizing[Cluster sizing] requirements.
 * Optional: A second OpenShift cluster for multicloud demonstration.
 //Replaced git and podman prereqs with the tooling dependencies page
@@ -30,9 +30,6 @@ If you do not have a running Red Hat OpenShift cluster, you can start one on a
 public or private cloud by using https://console.redhat.com/openshift/create[Red Hat Hybrid Cloud Console].
 
 .Procedure
-
-. https://validatedpatterns.io/learn/quickstart/[Install the tooling dependencies].
-+
 
 . Fork the https://github.com/validatedpatterns-sandbox/amx-accelerated-rhoai-multicloud-gitops/[amx-accelerated-rhoai-multicloud-gitops] repository on GitHub.
 . Clone the forked copy of this repository.
@@ -151,13 +148,13 @@ image::multicloud-gitops-amx-rhoai/amx-rhoai-validated-pattern-operator-2.png[In
 
 == Create {amx-rhoai-mcg-pattern}
 
-After succeeded installation open *Validated Patterns Operator*, go to *Pattern* tab and click *Create Pattern*.
+After a successful installation, open *Validated Patterns Operator* page. Next, go to *Pattern* tab and click *Create Pattern*.
 
-. Fill the *Name* of the pattern `multicloud-gitops-amx-rhoai` and *Cluster Group Name* `hub` (from _values-global.yaml_ file).
+. Set the *Name* field to `multicloud-gitops-amx-rhoai` and *Cluster Group Name* to `hub`, Values must be the same as in the _values-global.yaml_ file (Figure 3).
 
-. Under *Git Config > Target Repo* copy the link to your fork and under *Git Config > Target Revision* write the name of your branch (Figure 3).
+. As a *Git Config > Target Repo* value, paste the link to your fork. Under *Git Config > Target Revision* write the name of your branch (Figure 3).
 
-. Click *Create* to create the pattern.
+. Click *Create* button to create the pattern.
 +
 .Create Pattern Form
 image::multicloud-gitops-amx-rhoai/amx-rhoai-create-pattern.png[Create pattern AMX accelerated Multicloud GitOps with Openshift AI]
