@@ -32,7 +32,7 @@ Before proceeding with this demo steps, please make sure you have your pattern d
 
 . Download BERT-large example, that uses AMX accelerator, by typing in the opened notebook:
 [source,terminal]
-!wget https://raw.githubusercontent.com/validatedpatterns-sandbox/amx-accelerated-rhoai-multicloud-gitops/scripts/BERT.ipynb -O BERT.ipynb
+!wget https://raw.githubusercontent.com/validatedpatterns-sandbox/amx-accelerated-rhoai-multicloud-gitops/main/scripts/BERT.ipynb -O BERT.ipynb
 
 
 . On the left-hand side menu the `BERT.ipynb` script should show up. Open it and run instructions one by one with play button or with `Ctr+Enter` from keyboard.
